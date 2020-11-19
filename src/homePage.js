@@ -1,4 +1,5 @@
 const fs = require('fs');
+let pieDePagina = 'Recorda que podes visitar las secciones i_En Cartelera  iii_Sucursales v_Preguntas Frecuentes'
 
 let homePage = {
     leerJSON : function(){
@@ -11,7 +12,7 @@ let homePage = {
         return homePage.leerJSON().total_movies;
     },   
     pieDePagina : function(){    
-        return 'Recorda que podes visitar las secciones' + '\n\n' + "i - En Cartelera" + '\n\n' + "iii - Sucursales" + '\n\n' +  "v - Preguntas Frecuentes";
+        return pieDePagina;
        }
     
 

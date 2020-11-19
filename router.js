@@ -5,7 +5,7 @@ module.exports = function(req,res) {
         case '/':
             index.homePage(req,res)
             break;
-        case "/ en-cartelera" :
+        case "/en-cartelera" :
         index.enCartelera(req,res)
         break;
         case "/contacto":

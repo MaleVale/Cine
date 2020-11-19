@@ -26,13 +26,13 @@ module.exports = {
         res.write(`
         cartelera\n\n`)
         res.write("Total de películas: " + cartelera.length + "\n\n");
-        cartelera.forEach(movie => {
+        /* cartelera.forEach(movie => {
             res.write("Título: " + movie.title + "\n");
             res.write("Reseña: " + movie.overview +"\n\n")
 
 
-        });
-        
+        }); */
+        console.log(cartelera);
     },
     masVotadas: function (req, res) {
         let votadas = masVotadas.masVotadas()
