@@ -1,19 +1,4 @@
-/*const fs = require("fs")
-let enCartelera = {
-leerJSON : function(){
-    return JSON.parse(fs.readFileSync("./data/movies.json","utf-8"))
-},
-    cantidad : function(){
-        return movies.leerJSON().total_movies
-    },
-    peliculas : function(){
-        return movies.leerJSON().movies.overview
-    },
-    titulo : `NUESTRA CARTELERA PREMIUM`,
-}
 
-module.exports = enCartelera
-*/
 const fs = require('fs');
 
 let enCartelera = {
