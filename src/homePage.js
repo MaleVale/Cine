@@ -6,7 +6,7 @@ let homePage = {
         const fs = require("fs");
         let movies = JSON.parse(fs.readFileSync('./data/movies.json','utf-8'));
         movies.movies.sort((a, b) => (a.title > b.title)?1:(a.title < b.title)?-1:0);
-        return movies.movies
+        return movies
     },
     cantidad : function(){
         return homePage.leerJSON().total_movies;

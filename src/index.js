@@ -4,7 +4,7 @@ const masVotadas = require("./masVotadas")
 const contacto = require("./contacto")
 const enCartelera = require("./enCartelera")
 let movies = homePage.leerJSON();
-let preguntas = require("./preguntasFrecuentes")
+const preguntas = require("./preguntasFrecuentes")
 const teatros = require("./sucursales")
 module.exports = {
     homePage: function (req, res) {
@@ -12,7 +12,6 @@ module.exports = {
         res.write(`
         inicio\n\n`)
         res.write(`Total de películas: ` + movies.total_movies + "\n\n")
-        movies.movies.sort((a, b) => (a.title > b.title) ? 1 : (a.title < b.title) ? -1 : 0);
         movies.movies.forEach(movie => {
             res.write("********************************\n\n")
             res.write("Título: " + movie.title + "\n\n")

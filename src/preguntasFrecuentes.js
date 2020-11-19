@@ -1,6 +1,6 @@
 const fs = require("fs")
 let faqs = {
-leerJSON : function(){
+faqs : function(){
     return JSON.parse(fs.readFileSync("./data/faqs.json","utf-8"))
 },
     total : function(){
