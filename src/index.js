@@ -1,11 +1,10 @@
-
 const homePage = require("./homePage")
 const masVotadas = require("./masVotadas")
 const contacto = require("./contacto")
 const enCartelera = require("./enCartelera")
 let movies = homePage.leerJSON();
-const preguntas = require("./preguntasFrecuentes")
-const teatros = require("./sucursales")
+const preguntasFrecuentes = require("./preguntasFrecuentes")
+const sucursales = require("./sucursales");
 module.exports = {
     homePage: function (req, res) {
 
@@ -16,22 +15,20 @@ module.exports = {
             res.write("********************************\n\n")
             res.write("Título: " + movie.title + "\n\n")
             res.write("********************************\n\n")
-        });
-        res.end()
-       
+            })
+            res.write("\n\n")
+            res.write("\n\n")
+            res.write(`${homePage.pieDePagina}`);
+        res.end() 
     },
     enCartelera: function (req, res) {
-        let cartelera = enCartelera.enCartelera()
-        res.write(`
-        cartelera\n\n`)
-        res.write("Total de películas: " + cartelera.length + "\n\n");
-        /* cartelera.forEach(movie => {
-            res.write("Título: " + movie.title + "\n");
-            res.write("Reseña: " + movie.overview +"\n\n")
-
-
-        }); */
-        console.log(cartelera);
+        res.write(`Total de Peliculas: ${enCartelera.leerJSON().total_movies} \n\n`)
+        let movies = enCartelera.leerJSON() 
+        movies.movies.forEach(movie =>{
+          res.write(movie.title + '\n')
+          res.write(movie.overview + '\n\n')  
+        })
+        res.end()
     },
     masVotadas: function (req, res) {
         let votadas = masVotadas.masVotadas()
@@ -39,8 +36,8 @@ module.exports = {
         mas votadas\n\n`)
         res.write(`********************************\nEstas son las películas más votadas:\n******************************** ` + "\n\n");
         res.write("********************************\n\n")
-        res.write("Rating promedio: " + masVotadas.ratingPromedio() + "\n")
-        votadas.forEach(movie => {
+        res.write("Rating promedio: " + masVotadas.leerJSON() + "\n")
+        masVotadas.forEach(movie => {
             res.write("Título: " + movie.title + "\n");
             res.write("Descripción : " + movie.overview + "\n");
             res.write("Rating: " + movie.vote_average + "\n\n");
@@ -49,33 +46,33 @@ module.exports = {
         res.end()
     },
     contacto: function (req, res) {
-        res.write(contacto.contacto())
+        res.write(`Nuestro contacto: ${contacto.contacto}`);
         res.end()
     },
     preguntasFrecuentes: function (req, res) {
-        let faqs = preguntas.faqsJSON().faqs
+        let faqs = preguntasFrecuentes.leerJSON().faqs
         res.write(`
         preguntas frecuentes\n\n`)
         res.write("********************************\n\n")
-        res.write("Total de preguntas: " + preguntas.faqsJSON().total_faqs + "\n\n")
-        faqs.forEach(answer => {
-            res.write("Pregunta: " + answer.faq_title + "\n")
-            res.write("Respuesta: " + answer.faq_answer + "\n\n")
+        res.write("Total de preguntas: " + preguntasFrecuentes.leerJSON().total_faqs + "\n\n")
+        faqs.forEach(faqs => {
+            res.write("Pregunta: " + faqs.faq_title + "\n")
+            res.write("Respuesta: " + faqs.faq_answer + "\n\n")
             res.write("********************************\n\n")
         });
         res.end()
     },
     sucursales: function (req, res) {
-        let sucursales = teatros.sucursales().theaters;
+        let theaters = sucursales.leerJSON().theaters;
         res.write(`
         sucursales\n\n`)
         res.write("********************************\n\n")
-        res.write("Contamos con " + teatros.sucursales().total_theaters + " sucursales. \n\n")
-        sucursales.forEach(sucursal => {
-            res.write("Nombre: " + sucursal.name + "\n")
-            res.write("Dirección: " + sucursal.address + "\n")
-            res.write("Descripción: " + sucursal.description + "\n")
-            res.write("Cantidad de salas: " + sucursal.total_rooms + "\n\n")
+        res.write("Contamos con " + sucursales.leerJSON().total_theaters + " sucursales. \n\n")
+        theaters.forEach(theaters => {
+            res.write("Nombre: " + theaters.name + "\n")
+            res.write("Dirección: " + theaters.address + "\n")
+            res.write("Descripción: " + theaters.description + "\n")
+            res.write("Cantidad de salas: " + theaters.total_rooms + "\n\n")
             res.write("********************************\n\n")
         });
         res.end()

@@ -1,15 +1,12 @@
-const fs = require("fs")
-let faqs = {
-faqs : function(){
-    return JSON.parse(fs.readFileSync("./data/faqs.json","utf-8"))
-},
-    total : function(){
-        return faqs.leerJSON().total_faqs
-    },
-    preguntas : function(){
-        return faqs.leerJSON().faqs
-    },
-    titulo : `PREGUNTAS FRECUENTES`,
-}
+const fs = require('fs');
 
-module.exports = faqs
+ let preguntasFrecuentes = {
+    leerJSON:function(){
+            const fs = require("fs");
+            return JSON.parse(fs.readFileSync('./data/faqs.json','utf-8'));
+        },
+        cantidad : function(){
+            return preguntasFrecuentes.leerJSON().total_faqs;
+        },
+ }
+module.exports = preguntasFrecuentes;

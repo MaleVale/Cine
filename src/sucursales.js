@@ -1,15 +1,15 @@
-const fs = require("fs")
-let sucursales = {
-sucursales : function(){
-   sucursales = JSON.parse(fs.readFileSync("./data/theaters.json","utf-8"))
-},
-    total : function(){
-        return faqs.leerJSON().total_theaters
-    },
-    sucursales : function(){
-        return faqs.leerJSON().theaters
-    },
-    titulo : `SUCURSALES DISPONIBLES`,
-}
+const fs = require('fs')
 
-module.exports = sucursales
+
+let sucursales = {
+    leerJSON:function(){
+        const fs = require("fs");
+        return JSON.parse(fs.readFileSync('./data/theaters.json','utf-8'));
+        },
+        cantidad : function(){
+            return sucursales.leerJSON().total_theaters;
+        },
+ }
+
+
+module.exports = sucursales  

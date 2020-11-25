@@ -14,7 +14,7 @@ module.exports = function(req,res) {
         case "/mas-Votadas":
         index.masVotadas(req,res)
         break;
-        case "/preguntas-Frecuentes":
+        case "/preguntas-frecuentes":
             index.preguntasFrecuentes(req,res);
             break;
             case "/sucursales":
