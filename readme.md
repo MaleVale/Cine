@@ -1,1 +1,1 @@
-#Gupo: Alex, Male, Ivan, Eze y Lean
+#Grupo: Alex, Male, Ivan, Eze y Lean
